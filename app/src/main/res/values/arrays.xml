@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="titles">
+        <item >FragmentActivity</item>
+        <item >IPhone</item>
+        <item >IOS</item>
+        <item >Mac</item>
+        <item >Windows</item>
+        <item >Android</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+        <item >Linux</item>
+    </array>
+</resources>
