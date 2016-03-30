@@ -1,9 +1,9 @@
 package com.example.ll.demo02.fragment;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +78,7 @@ public class PlusOneFragment extends Fragment {
         return view;
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -124,5 +125,8 @@ public class PlusOneFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
 
 }

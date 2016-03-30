@@ -1,11 +1,11 @@
 package com.example.ll.demo02.fragment;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,7 +133,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
                 FragmentManager fmm = getFragmentManager();
                 FragmentTransaction fragmentTra = fmm.beginTransaction();
                 PlusOneFragment plusOne = new PlusOneFragment();
-                fragmentTra.replace(R.id.add_fragment,plusOne);
+                fragmentTra.replace(R.id.add_fragment, plusOne);
                 fragmentTra.commit();
 
                 break;
@@ -142,6 +142,9 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
         }
 
     }
+
+
+
 
     /**
      * This interface must be implemented by activities that contain this

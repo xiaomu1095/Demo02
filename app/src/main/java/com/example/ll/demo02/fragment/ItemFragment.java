@@ -1,8 +1,8 @@
 package com.example.ll.demo02.fragment;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,8 +13,6 @@ import android.view.ViewGroup;
 import com.example.ll.demo02.R;
 import com.example.ll.demo02.fragment.dummy.DummyContent;
 import com.example.ll.demo02.fragment.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -75,6 +73,11 @@ public class ItemFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
 
     @Override
     public void onAttach(Context context) {
