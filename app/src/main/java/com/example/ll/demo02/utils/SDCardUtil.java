@@ -35,14 +35,24 @@ public class SDCardUtil {
      *
      * @return
      */
+    @TargetApi(android.os.Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static long getSDCardAllSize() {
         if (isSDCardEnable()) {
             StatFs stat = new StatFs(getSDCardPath());
             // 获取空闲的数据块的数量
-            long availableBlocks = (long) stat.getAvailableBlocks() - 4;
+            long availableBlocks = 0;
             // 获取单个数据块的大小（byte）
-            long freeBlocks = stat.getAvailableBlocks();
-            return freeBlocks * availableBlocks;
+            long freeBlocks = 0;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                availableBlocks = stat.getAvailableBlocksLong() - 4;
+                freeBlocks = stat.getAvailableBlocksLong();
+                return freeBlocks * availableBlocks;
+            } else {
+                availableBlocks = stat.getAvailableBlocks() - 4;
+                freeBlocks = stat.getAvailableBlocks();
+                return freeBlocks * availableBlocks;
+            }
+
         }
         return 0;
     }

@@ -20,8 +20,7 @@ public class APPUtil {
     public static String getAppName(Context context) {
         try {
             PackageManager packageManager = context.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(
-                    context.getPackageName(), 0);
+            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
             int labelRes = packageInfo.applicationInfo.labelRes;
             return context.getResources().getString(labelRes);
         } catch (PackageManager.NameNotFoundException e) {
@@ -47,4 +46,25 @@ public class APPUtil {
         }
         return null;
     }
+
+
+
+    /**
+     * [获取应用程序版本代码信息]
+     *
+     * @param context
+     * @return 当前应用的版本号
+     */
+    public static int getVersionCode(Context context) {
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 }

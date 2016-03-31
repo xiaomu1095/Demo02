@@ -3,12 +3,12 @@
     <array name="titles">
         <item >FragmentActivity</item>
         <item >样式</item>
-        <item >IOS</item>
+        <item >切换Fragment时数据保持</item>
         <item >Mac</item>
         <item >Windows</item>
         <item >Android</item>
         <item >IPhone</item>
-        <item >Linux</item>
+        <item >IOS</item>
         <item >Linux</item>
         <item >Linux</item>
         <item >Linux</item>
