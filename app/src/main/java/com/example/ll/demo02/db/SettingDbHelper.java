@@ -5,14 +5,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Administrator on 2016/3/30.
+ * Created by Administrator on 2016/bg_btn_pressed/30.
  */
 public class SettingDbHelper extends SQLiteOpenHelper{
+
+    private static final int dbVersion = 1;
 
     public SettingDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
+
+    //严谨的单例模式
     private static volatile SettingDbHelper sInst = null;  // <<< 这里添加了 volatile
     public static SettingDbHelper getInstance(Context context) {
         SettingDbHelper inst = sInst;  // <<< 在这里创建临时变量
@@ -20,7 +24,7 @@ public class SettingDbHelper extends SQLiteOpenHelper{
             synchronized (SettingDbHelper.class) {
                 inst = sInst;
                 if (inst == null) {
-                    inst = new SettingDbHelper(context,"",null,1);
+                    inst = new SettingDbHelper(context,"",null,dbVersion);
                     sInst = inst;
                 }
             }

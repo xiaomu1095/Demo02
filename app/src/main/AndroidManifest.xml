@@ -22,9 +22,11 @@
         </activity>
         <activity
             android:name=".fragment.FragmentActivity"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
 
-        <receiver android:name=".MainActivity$ExitReceiver"/>
+        <receiver android:name=".MainActivity$ExitReceiver" />
+
+        <activity android:name=".style.StyleActivity"></activity>
     </application>
 
 </manifest>

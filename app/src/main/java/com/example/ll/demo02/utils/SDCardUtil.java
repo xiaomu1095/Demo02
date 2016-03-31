@@ -1,13 +1,11 @@
 package com.example.ll.demo02.utils;
 
+import android.annotation.TargetApi;
 import android.os.Environment;
 import android.os.StatFs;
 
 import java.io.File;
 
-/**
- * Created by Administrator on 2016/3/30.
- */
 public class SDCardUtil {
     private SDCardUtil() {
         /** cannot be instantiated **/
@@ -55,6 +53,7 @@ public class SDCardUtil {
      * @param filePath
      * @return 容量字节 SDCard可用空间，内部存储可用空间
      */
+    @TargetApi(android.os.Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static long getFreeBytes(String filePath) {
         // 如果是sd卡的下的路径，则获取sd卡可用容量
         if (filePath.startsWith(getSDCardPath())) {
@@ -63,8 +62,14 @@ public class SDCardUtil {
             filePath = Environment.getDataDirectory().getAbsolutePath();
         }
         StatFs stat = new StatFs(filePath);
-        long availableBlocks = (long) stat.getAvailableBlocks() - 4;
-        return stat.getBlockSize() * availableBlocks;
+        long availableBlocks = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            availableBlocks = stat.getAvailableBlocksLong() - 4;    //一、使用@TargetApi annotaion， 使高版本API的代码在低版本SDK不报错
+            return stat.getBlockSizeLong() * availableBlocks;
+        } else {
+            availableBlocks = (long) stat.getAvailableBlocks() - 4;
+            return stat.getBlockSize() * availableBlocks;
+        }
     }
 
     /**

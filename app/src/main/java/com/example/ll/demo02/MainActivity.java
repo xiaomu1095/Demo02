@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.ll.demo02.fragment.FragmentActivity;
+import com.example.ll.demo02.style.StyleActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -43,6 +44,9 @@ public class MainActivity extends BaseActivity {
                 switch (position + 1) {
                     case 1:
                         startActivity(new Intent(MainActivity.this,FragmentActivity.class));     //FragmentOneActivity
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this,StyleActivity.class));     //样式
                         break;
                     default:
                         break;

@@ -8,7 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Created by Administrator on 2016/3/30.
+ * Created by Administrator on 2016/bg_btn_pressed/30.
  */
 public class NetUtil {
     private NetUtil() {

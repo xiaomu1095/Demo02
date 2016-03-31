@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!-- android:shape指定形状类型，默认为rectangle -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadiusRatio="3"
+    android:shape="ring"
+    android:thicknessRatio="9"
+    android:useLevel="false">
+
+    <gradient
+        android:centerColor="#111111"
+        android:endColor="#86FF35"
+        android:startColor="#aa2356"
+        android:type="sweep" />
+
+    <stroke
+        android:width="3dp"
+        android:color="#12F460"
+        android:dashGap="4dp"
+        android:dashWidth="2dp" />
+
+</shape>

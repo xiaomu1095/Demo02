@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by Administrator on 2016/3/28.
+ * Created by Administrator on 2016/bg_btn_pressed/28.
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> implements RecyclerView.OnClickListener{
 
