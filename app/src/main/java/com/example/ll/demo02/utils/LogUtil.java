@@ -11,7 +11,6 @@ public class LogUtil {
 
     }
 
-
     //双重锁定(Double-Check Locking)单列模式
     public static LogUtil getInstance() {
         if (sLogUtil == null) {

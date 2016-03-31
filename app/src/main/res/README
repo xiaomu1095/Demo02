@@ -1,3 +1,191 @@
+http://keeganlee.me/post/android/20150916
+
+
+Android有很多种drawable类型，除了前几篇详细讲解的shape、selector、layer-list，
+    还有color、bitmap、clip、scale、inset、transition、rotate、animated-rotate、lever-list等等
+
+
+图片是最常用的drawable资源，格式包括：png(推荐)、jpg(可接受)、gif(不建议)。用图片资源需要根据不同屏幕密度提供多张不同尺寸的图片，它们的关系如下表：
+
+密度分类	密度值范围	代表分辨率	图标尺寸	    图片比例
+mdpi	120~160dpi	320x480px	48x48px	    1
+hdpi	160~240dpi	480x800px	72x72px	    1.5
+xhdpi	240~320dpi	720x1280px	96x96px	    2
+xxhdpi	320~480dpi	1080x1920px	144x144px	3
+xxxhdpi	480~640dpi	1440x2560px	192x192px	4
+
+
+inset标签
+使用inset标签可以对drawable设置边距，其用法和View的padding类似，只不过padding是设置内容与边界的距离，而inset则可以设置背景drawable与View边界的距离。inset标签的可设置属性如下：
+
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:visible 设置初始的可见性状态，默认为false
+android:insetLeft 左边距
+android:insetRight 右边距
+android:insetTop 顶部边距
+android:insetBottom 底部边距
+android:inset 设置统一边距，会覆盖上面四个属性，但API Level要求为21，即Android 5.0
+
+
+clip标签
+
+使用clip标签可以对drawable进行裁剪，在做进度条时很有用。
+通过设置level值控制裁剪多少，level取值范围为0~10000，默认为0，表示完全裁剪，图片将不可见；10000则完全不裁剪，可见完整图片。
+看看clip标签可以设置的属性：
+
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:clipOrientation 设置裁剪的方向，取值为以下两个值之一：
+    horizontal 在水平方向上进行裁剪，条状的进度条就是水平方向的裁剪
+    vertical 在垂直方向上进行裁剪
+
+android:gravity 设置裁剪的位置，可取值如下，多个取值用 | 分隔：
+    top 图片放于容器顶部，不改变图片大小。当裁剪方向为vertical时，会裁掉图片底部
+    bottom 图片放于容器底部，不改变图片大小。当裁剪方向为vertical时，会裁掉图片顶部
+    left 图片放于容器左边，不改变图片大小，默认值。当裁剪方向为horizontal，会裁掉图片右边部分
+    right 图片放于容器右边，不改变图片大小。当裁剪方向为horizontal，会裁掉图片左边部分
+    center 图片放于容器中心位置，包括水平和垂直方向，不改变图片大小。当裁剪方向为horizontal时，会裁掉图片左右部分；当裁剪方向为vertical时，会裁掉图片上下部分
+    fill 拉伸整张图片以填满容器的整个高度和宽度。这时候图片不会被裁剪，除非level设为了0，此时图片不可见
+    center_vertical 图片放于容器垂直方向的中心位置，不改变图片大小。裁剪和center时一样
+    center_horizontal 图片放于容器水平方向的中心位置，不改变图片大小。裁剪和center时一样
+    fill_vertical 在垂直方向上拉伸图片以填满容器的整个高度。当裁剪方向为vertical时，图片不会被裁剪，除非level设为了0，此时图片不可见
+    fill_horizontal 在水平方向上拉伸图片以填满容器的整个宽度。当裁剪方向为horizontal时，图片不会被裁剪，除非level设为了0，此时图片不可见
+    clip_vertical 附加选项，裁剪基于垂直方向的gravity设置，设置top时会裁剪底部，设置bottom时会裁剪顶部，其他情况会同时裁剪顶部和底部
+    clip_horizontal 附加选项，裁剪基于水平方向的gravity设置，设置left时会裁剪右侧，设置right时会裁剪左侧，其他情况会同时裁剪左右两侧
+
+<?xml version="1.0" encoding="utf-8"?>
+<clip xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clipOrientation="horizontal"
+    android:drawable="@drawable/img4clip"
+    android:gravity="left" />
+
+
+
+scale标签
+
+使用scale标签可以对drawable进行缩放操作，和clip一样是通过设置level来控制缩放的比例。scale标签可以设置的属性如下：
+
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:scaleHeight 设置可缩放的高度，用百分比表示，格式为XX%，0%表示不做任何缩放，50%表示只能缩放一半
+android:scaleWidth 设置可缩放的宽度，用百分比表示，格式为XX%，0%表示不做任何缩放，50%表示只能缩放一半
+android:scaleGravity 设置drawable缩放后的位置，取值和bitmap标签的一样，就不一一列举说明了，不过默认值是left
+android:useIntrinsicSizeAsMinimum 设置drawable原有尺寸作为最小尺寸，设为true时，缩放基本无效，API Level最低要求为11
+
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/img4scale"
+    android:scaleGravity="left"
+    android:scaleHeight="50%"
+    android:scaleWidth="50%"
+    android:useIntrinsicSizeAsMinimum="false" />
+
+
+
+level-list标签
+
+当需要在一个View中显示不同图片的时候，比如手机剩余电量不同时显示的图片不同，level-list就可以派上用场了。
+level-list可以管理一组drawable，每个drawable设置一组level范围，最终会根据level值选取对应的drawable绘制出来。
+level-list通过添加item子标签来添加相应的drawable，其下的item只有三个属性：
+
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:minLevel 该item的最小level值
+android:maxLevel 该item的最大level值
+
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/battery_low"
+        android:maxLevel="10"
+        android:minLevel="0" />
+    <item
+        android:drawable="@drawable/battery_below_half"
+        android:maxLevel="50"
+        android:minLevel="10" />
+    <item
+        android:drawable="@drawable/battery_over_half"
+        android:maxLevel="99"
+        android:minLevel="50" />
+    <item
+        android:drawable="@drawable/battery_full"
+        android:maxLevel="100"
+        android:minLevel="100" />
+</level-list>
+
+
+
+transition标签
+
+transition其实是继承自layer-list的，只是，transition只能管理两层drawable，另外提供了两层drawable之间切换的方法，切换时还会有淡入淡出的动画效果。示例代码如下：
+
+<?xml version="1.0" encoding="utf-8"?>
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/on" />
+    <item android:drawable="@drawable/off" />
+</transition>
+
+
+
+
+rotate标签
+
+使用rotate标签可以对一个drawable进行旋转操作，在shape篇讲环形时最后举了个进度条时就用到了rotate标签。
+另外，比如你有一张箭头向上的图片，但你还需要一个箭头向下的图片，这时就可以使用rotate将向上的箭头旋转变成一张箭头向下的drawable。
+先看看rotate标签的一些属性吧：
+
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:fromDegrees 起始的角度度数
+android:toDegrees 结束的角度度数，正数表示顺时针，负数表示逆时针
+android:pivotX 旋转中心的X坐标，浮点数或是百分比。浮点数表示相对于drawable的左边缘距离单位为px，如5;
+    百分比表示相对于drawable的左边缘距离按百分比计算，如5%;
+    另一种百分比表示相对于父容器的左边缘，如5%p; 一般设置为50%表示在drawable中心
+android:pivotY 旋转中心的Y坐标
+android:visible 设置初始的可见性状态，默认为false
+
+
+
+animation-list标签
+
+通过animation-list可以将一系列drawable构建成帧动画，就是将一个个drawable，一帧一帧的播放。通过添加item子标签设置每一帧使用的drawable资源，以及每一帧持续的时间。示例代码如下：
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/anim1"
+        android:duration="1000" />
+    <item
+        android:drawable="@mipmap/anim2"
+        android:duration="1000" />
+    <item
+        android:drawable="@mipmap/anim3"
+        android:duration="1000" />
+</animation-list>
+android:oneshot属性设置是否循环播放，设为true时，只播放一轮就结束，设为false时，则会轮询播放。
+android:duration属性设置该帧持续的时间，以毫秒数为单位。
+animation-list对应的Drawable类为AnimationDrawable，要让动画运行起来，需要主动调用AnimationDrawable的start()方法。
+另外，如果在Activity的onCreate()方法里直接调用start()方法会没有效果，因为view还没有初始化完成是播放不了动画的。
+
+
+
+animated-rotate
+
+rotate标签只是将原有的drawable转个角度变成另一个drawable，它是静态的。而animated-rotate则会让drawable不停地做旋转动画。
+animated-rotate可设置的属性只有四个：
+
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:pivotX 旋转中心的X坐标
+android:pivotY 旋转中心的Y坐标
+android:visible 设置初始的可见性状态，默认为false
+示例代码：
+
+<?xml version="1.0" encoding="utf-8"?>
+<animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/img_daisy"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:visible="false" />
+
+
+
+
 1、shape
 android:shape="rectangle"
     rectangle: 矩形，默认的形状，可以画出直角矩形、圆角矩形、弧形等

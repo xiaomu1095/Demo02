@@ -1,0 +1,37 @@
+可以通过xml文件定义，不同的是，视图动画的xml文件放于res/anim/目录下，而属性动画的xml文件则放于res/animator/目录下。一个是anim，一个是animator，别搞错了。
+同样的，在Java代码里引用属性动画的xml文件时，则用R.animator.filename，不同于视图动画，引用时为R.anim.filename。
+
+属性动画主要有三个元素：<animator>、<objectAnimator>、<set>。
+相对应的有三个类：ValueAnimator、ObjectAnimator、AnimatorSet。
+ValueAnimator是基本的动画类，处理值动画，通过监听某一值的变化，进行相应的操作。
+ObjectAnimator是ValueAnimator的子类，处理对象动画。AnimatorSet则为动画集，可以组合另外两种动画或动画集。相应的三个标签元素的关系也一样。
+样式开发主要还是用xml的形式，所以这里主要还是讲标签的用法。
+
+
+<animator>
+
+<animator>标签与对应的ValueAnimator类提供了属性动画的核心功能，包括计算动画值、动画时间细节、是否重复等。执行属性动画分两个步骤：
+
+计算动画值
+将动画值应用到对象和属性上
+ValuAnimiator只完成第一步，即只计算值，要实现第二步则需要在值变化的监听器里自行更新对象属性。
+通过<animator>标签可以很方便的对ValuAnimiator进行设置，可设置的属性如下：
+
+android:duration 动画从开始到结束持续的时长，单位为毫秒
+android:startOffset 设置动画执行之前的等待时长，单位为毫秒
+android:repeatCount 设置动画重复执行的次数，默认为0，即不重复；可设为-1或infinite，表示无限重复
+android:repeatMode 设置动画重复执行的模式，可设为以下两个值其中之一：
+    restart 动画重复执行时从起点开始，默认为该值
+    reverse 动画会反方向执行
+android:valueFrom 动画开始的值，可以为int值、float值或color值
+android:valueTo 动画结束的值，可以为int值、float值或color值
+android:valueType 动画值类型，若为color值，则无需设置该属性
+
+intType 指定动画值，即以上两个value属性的值为整型
+floatType 指定动画值，即以上两个value属性的值为浮点型，默认值
+android:interpolator 设置动画速率的变化，比如加速、减速、匀速等，需要指定Interpolator资源。具体用法在View Animation篇已经讲过，
+
+视图动画是通过AnimationUtils类的loadAnimation()方法获取xml文件相对应的Animation类实例，而属性动画则是通过AnimatorInflater类的loadAnimation()方法获取相应的Animator类实例。
+另外，ValueAnimator通过添加AnimatorUpdateListener监听器监听值的变化，从而再手动更新目标对象的属性。
+最后，通过调用valueAnimator.start()方法启动动画。
+
