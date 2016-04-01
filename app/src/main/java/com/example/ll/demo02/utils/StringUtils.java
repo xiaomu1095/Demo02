@@ -1,5 +1,6 @@
 package com.example.ll.demo02.utils;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -42,6 +43,58 @@ public class StringUtils {
         return emailer.matcher(email).matches();
     }
 
+
+    /**
+     * 判断输入的字符串是否为纯汉字
+     *
+     * @param str
+     *            传入的字符窜
+     * @return 如果是纯汉字返回true,否则返回false
+     */
+    public static boolean isChinese(String str) {
+        Pattern pattern = Pattern.compile("[\u0391-\uFFE5]+$");
+        return pattern.matcher(str).matches();
+    }
+
+
+    /**
+     * 判断是否为数字
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        if (!isNum.matches()) {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * 判断手机号码是否正确
+     *
+     * @param phoneNumber
+     * @return
+     */
+    public static boolean isPhoneNumberValid(String phoneNumber) {
+        phoneNumber = trimmy(phoneNumber);
+        NumberUtils mobile = new NumberUtils(phoneNumber);
+        return mobile.isLawful();
+    }
+
+
+    public static String trimmy(String str) {
+        String dest = "";
+        if (str != null) {
+            str = str.replaceAll("-", "");
+            str = str.replaceAll("\\+", "");
+            dest = str;
+        }
+        return dest;
+    }
 
 
 
