@@ -11,7 +11,6 @@ public class APPUtil {
     private APPUtil() {
         /**cannot be instantiated **/
         throw new UnsupportedOperationException("cannot be instantiated");
-
     }
 
     /**
@@ -40,7 +39,6 @@ public class APPUtil {
             PackageManager packageManager = context.getPackageManager();
             PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
             return packageInfo.versionName;
-
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

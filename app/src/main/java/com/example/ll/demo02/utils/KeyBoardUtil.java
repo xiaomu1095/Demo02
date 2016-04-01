@@ -8,8 +8,9 @@ import android.widget.EditText;
  * Created by Administrator on 2016/bg_btn_pressed/30.
  */
 public class KeyBoardUtil {
+
     /**
-     * 打卡软键盘
+     * 打开软键盘
      *
      * @param mEditText 输入框
      * @param mContext  上下文
@@ -31,4 +32,5 @@ public class KeyBoardUtil {
 
         imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
     }
+
 }

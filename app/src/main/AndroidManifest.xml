@@ -28,7 +28,12 @@
         <receiver android:name=".MainActivity$ExitReceiver" />
 
         <activity android:name=".style.StyleActivity" />
-        <activity android:name=".test.TestOneActivity"/>
+        <activity android:name=".test.TestOneActivity" />
+
+        <service
+            android:name=".service.UploadService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
