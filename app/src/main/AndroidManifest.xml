@@ -35,7 +35,13 @@
         <service
             android:name=".service.UploadService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
+
+        <provider
+            android:name=".provider.MyContentProvider"
+            android:authorities="com.xiaomu.demo02.myprovider"
+            android:enabled="true"
+            android:exported="true"></provider>
     </application>
 
 </manifest>

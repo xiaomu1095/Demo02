@@ -1,6 +1,11 @@
 package com.example.ll.demo02.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class NumberUtils {
+
+    public static Pattern pattern = Pattern.compile("[0-9]+");
 
     /**
      * 中国移动拥有号码段为:139,138,137,136,135,134,159,158,157(3G),151,150,188(3G),187(3G
@@ -98,5 +103,47 @@ public class NumberUtils {
         this.is3G = is3G;
     }
 
+
+    public static Integer parseInt(String value) {
+        if (value == null) {
+            return 0;
+        }
+        Integer val = 0;
+        try {
+            Matcher matcher = pattern.matcher(value);
+            if (matcher.find()) {
+                String num = matcher.group(0);
+                val = Integer.parseInt(num);
+            }
+        } catch (Exception e) {
+            FileLog.e("tmessages", e);
+        }
+        return val;
+    }
+
+    public static Long parseLong(String value) {
+        if (value == null) {
+            return 0L;
+        }
+        Long val = 0L;
+        try {
+            Matcher matcher = pattern.matcher(value);
+            if (matcher.find()) {
+                String num = matcher.group(0);
+                val = Long.parseLong(num);
+            }
+        } catch (Exception e) {
+            FileLog.e("tmessages", e);
+        }
+        return val;
+    }
+
+    public static String parseIntToString(String value) {
+        Matcher matcher = pattern.matcher(value);
+        if (matcher.find()) {
+            return matcher.group(0);
+        }
+        return null;
+    }
 
 }

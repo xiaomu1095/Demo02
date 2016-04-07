@@ -4,12 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Administrator on 2016/bg_btn_pressed/30.
- */
 public class SettingDbHelper extends SQLiteOpenHelper{
 
     private static final int dbVersion = 1;
+
+    public SettingDbHelper(Context context){
+        super(context, "SettinfDB", null , 1);
+    }
 
     public SettingDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
