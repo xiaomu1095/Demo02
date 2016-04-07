@@ -35,11 +35,15 @@ public class SettingDbHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        String sql = "CREATE  TABLE table_name(_id INTEGER PRIMARY KEY , filename VARCHAR, data TEXT)";
+        db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+
+
 }

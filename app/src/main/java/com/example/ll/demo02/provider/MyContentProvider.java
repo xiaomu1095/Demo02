@@ -34,9 +34,6 @@ public class MyContentProvider extends ContentProvider {
     }
 
 
-
-
-
     public MyContentProvider() {
     }
 
@@ -46,11 +43,21 @@ public class MyContentProvider extends ContentProvider {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+
+    //用于获取MIME Type
     @Override
     public String getType(Uri uri) {
         // TODO: Implement this to handle requests for the MIME type of the data
         // at the given URI.
-        throw new UnsupportedOperationException("Not yet implemented");
+        switch (MATCHER.match(uri)) {
+            case STUDENT:
+                return "vnd.android.cursor.item/student";
+            case STUDENTS:
+                return "vnd.android.cursor.dir/student";
+            default:
+                throw new IllegalArgumentException("Unkwon Uri:" + uri.toString());
+        }
+//        throw new UnsupportedOperationExceptionationException("Not yet implemented");
     }
 
 
