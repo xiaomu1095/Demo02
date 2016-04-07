@@ -41,7 +41,12 @@
             android:name=".provider.MyContentProvider"
             android:authorities="com.xiaomu.demo02.myprovider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
+
+        <activity
+            android:name=".db.LoaderActivity"
+            android:label="@string/title_activity_loader"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
