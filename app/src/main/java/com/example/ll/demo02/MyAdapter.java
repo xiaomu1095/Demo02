@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * Created by Administrator on 2016/bg_btn_pressed/28.
- */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> implements RecyclerView.OnClickListener{
 
     private final LayoutInflater mLayoutInflater;
@@ -98,8 +95,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
         public MyViewHolder(View itemView) {
             super(itemView);
             mTextView = (TextView) itemView;
-
-
         }
 
 

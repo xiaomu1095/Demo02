@@ -1,9 +1,5 @@
 package com.example.ll.demo02.base;
 
-/**
- * Created by Administrator on 2016/3/31.
- */
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -70,6 +66,7 @@ public class BaseApplication extends Application {
     public static boolean isOnReadedPostList(String prefFileName, String key) {
         return getPreferences(prefFileName).contains(key);
     }
+
 
     /**
      * 记录列表上次刷新时间

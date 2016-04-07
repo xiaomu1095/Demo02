@@ -5,9 +5,6 @@ import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Administrator on 2016/4/1.
- */
 public class FileUtils {
 
     /**

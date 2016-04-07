@@ -4,22 +4,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
-/**
- * Created by Administrator on 2016/4/1.
- */
 public class TimeUtils {
 
+    public static final String FORMAT06 = "yyyy";
     public static final String FORMAT08 = "yyyyMMdd";
+    public static final String FORMAT10 = "yyyy-MM-dd";
     public static final String FORMAT14 = "yyyyMMddHHmmss";
     public static final String FORMAT17 = "yyyyMMddHHmmssSSS";
     public static final String FORMAT19 = "yyyy-MM-dd HH:mm:ss";
-    public static final String FORMAT10 = "yyyy-MM-dd";
-    public static final String FORMAT06 = "yyyy";
 
     public static String formatDate(Date d, String format) {
         String rs = null;
-        SimpleDateFormat df = new SimpleDateFormat(format);
+        SimpleDateFormat df = new SimpleDateFormat(format, Locale.CHINA);
 //		Calendar c = Calendar.getInstance();
 //		c.setTime(d);
 //		df.setCalendar(c);
@@ -28,7 +26,7 @@ public class TimeUtils {
     }
 
     public static Date formateDateStr(String format, String dateStr) {
-        SimpleDateFormat df = new SimpleDateFormat(format);
+        SimpleDateFormat df = new SimpleDateFormat(format, Locale.CHINA);
         try {
             return df.parse(dateStr);
         } catch (ParseException e) {

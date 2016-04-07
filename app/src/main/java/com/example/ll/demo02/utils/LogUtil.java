@@ -1,8 +1,5 @@
 package com.example.ll.demo02.utils;
 
-/**
- * Created by Administrator on 2016/bg_btn_pressed/30.
- */
 public class LogUtil {
 
     private static LogUtil sLogUtil;
@@ -13,14 +10,16 @@ public class LogUtil {
 
     //双重锁定(Double-Check Locking)单列模式
     public static LogUtil getInstance() {
-        if (sLogUtil == null) {
+        LogUtil mLogUtil = sLogUtil;
+        if (mLogUtil == null) {
             synchronized (LogUtil.class) {
-                if (sLogUtil == null) {
-                    sLogUtil = new LogUtil();
+                mLogUtil = sLogUtil;
+                if (mLogUtil == null) {
+                    sLogUtil = mLogUtil = new LogUtil();
                 }
             }
         }
-        return sLogUtil;
+        return mLogUtil;
     }
 
 }

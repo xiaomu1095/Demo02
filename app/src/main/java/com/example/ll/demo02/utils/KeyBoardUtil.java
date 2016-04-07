@@ -4,9 +4,6 @@ import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-/**
- * Created by Administrator on 2016/bg_btn_pressed/30.
- */
 public class KeyBoardUtil {
 
     /**

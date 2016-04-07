@@ -7,9 +7,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2016/bg_btn_pressed/30.
- */
 public class SPUtil {
     /**
      * 保存在手机里面的文件名
@@ -138,6 +135,7 @@ public class SPUtil {
                 Class clz = SharedPreferences.Editor.class;
                 return clz.getMethod("apply");
             } catch (NoSuchMethodException e) {
+                FileLog.e("SpUtil",e);
             }
 
             return null;
@@ -155,8 +153,11 @@ public class SPUtil {
                     return;
                 }
             } catch (IllegalArgumentException e) {
+                FileLog.e("SpUtil",e);
             } catch (IllegalAccessException e) {
+                FileLog.e("SpUtil",e);
             } catch (InvocationTargetException e) {
+                FileLog.e("SpUtil",e);
             }
             editor.commit();
         }

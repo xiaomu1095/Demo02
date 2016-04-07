@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-/**
- * Created by Administrator on 2016/bg_btn_pressed/30.
- */
 public class APPUtil {
     private APPUtil() {
         /**cannot be instantiated **/
@@ -41,8 +38,9 @@ public class APPUtil {
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
+//        return null;
     }
 
 

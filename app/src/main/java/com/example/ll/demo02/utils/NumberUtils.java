@@ -1,8 +1,5 @@
 package com.example.ll.demo02.utils;
 
-/**
- * Created by Administrator on 2016/4/1.
- */
 public class NumberUtils {
 
     /**
