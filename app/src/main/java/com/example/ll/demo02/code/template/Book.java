@@ -1,8 +1,6 @@
 package com.example.ll.demo02.code.template;
 
-/**
- * Created by Administrator on 2016/3/31.
- */
+
 public class Book {
     private String bookName;
 

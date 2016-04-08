@@ -1,8 +1,8 @@
 package com.example.ll.demo02.code.strategy;
 
-/**
- * Created by Administrator on 2016/3/31.
- */
+
+
+
 public class Strategy1 implements Strategy {
 
     @Override

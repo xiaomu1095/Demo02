@@ -1,6 +1,8 @@
 package com.example.ll.demo02.db;
 
 import android.app.LoaderManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -57,6 +59,23 @@ public class LoaderActivity extends AppCompatActivity {
 
 
 
+    //使用ContentProvider添加数据的测试
+    public void testadd() throws Throwable {
+        //获取ContentResolver对象，完成对ContentProvider的调用
+        ContentResolver contentResolver = this.getContentResolver();
+        //构建我们的uir，这个uri
+        Uri insertUri = Uri.parse("content://com.example.mydbdemo.StudentProvider/student");
+        ContentValues values = new ContentValues();
+        values.put("name", "zhaokaikai");
+        values.put("age", 91);
+        values.put("school", "bbbb");
+        //返回值为我们刚插入进入的数据的uri地址
+        Uri uri = contentResolver.insert(insertUri, values);
+        Log.i("TAG", uri.toString());
+    }
+
+
+
     // Loader的回调接口，在这里异步加载数据库的内容，显示在ListView上，同时能够自动更新
     private LoaderManager.LoaderCallbacks<Cursor> callbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
         @Override
@@ -65,6 +84,7 @@ public class LoaderActivity extends AppCompatActivity {
             Uri uri = Uri.parse("content://com.example.loadermanagertest.PersonContentProvider/person");
             CursorLoader loader = new CursorLoader(LoaderActivity.this, uri, null, null, null, null);
             Log.i("TAG", "--->>onCreateLoader被执行。");
+
             return loader;
         }
 
