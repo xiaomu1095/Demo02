@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
@@ -16,12 +17,14 @@ import com.example.ll.demo02.base.BaseActivity;
 import com.example.ll.demo02.fragment.FragmentActivity;
 import com.example.ll.demo02.style.StyleActivity;
 import com.example.ll.demo02.test.TestOneActivity;
+import com.example.ll.demo02.time.FastDateFormat;
 import com.example.ll.demo02.utils.FileLog;
 import com.example.ll.demo02.utils.SDCardUtil;
 
 public class MainActivity extends BaseActivity {
 
     private static final String EXITACTION = "action.exit";
+    private FastDateFormat fastDateFormat = null;
     private ExitReceiver exitReceiver = new ExitReceiver();
 
     private RecyclerView recycler_view_test_rv;
@@ -35,6 +38,8 @@ public class MainActivity extends BaseActivity {
         filter.addAction(EXITACTION);
         registerReceiver(exitReceiver, filter);
 
+        //初始化变量(时间转换的使用)
+        fastDateFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSS");
 
         setContentView(R.layout.activity_main);
 
@@ -51,7 +56,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 2:
                         startActivity(new Intent(MainActivity.this,StyleActivity.class));     //样式
-                        FileLog.d("tag","startActivity(new Intent(MainActivity.this,StyleActivity.class));");
+                        FileLog.d("tag",fastDateFormat.format(System.currentTimeMillis())+"startActivity(new Intent(MainActivity.this,StyleActivity.class));");
                         break;
                     case 3:
                         String freeBytes = SDCardUtil.getFreeBytes(SDCardUtil.getSDCardPath()) + "";

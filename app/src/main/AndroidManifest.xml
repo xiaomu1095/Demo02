@@ -46,7 +46,7 @@
         <activity
             android:name=".db.LoaderActivity"
             android:label="@string/title_activity_loader"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
