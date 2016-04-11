@@ -1,19 +1,18 @@
 package com.example.ll.demo02.mvp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import com.example.ll.demo02.MainActivity;
 import com.example.ll.demo02.R;
 import com.example.ll.demo02.mvp.presenter.LoginPresenter;
 import com.example.ll.demo02.mvp.presenter.LoginPresenterImpl;
 import com.example.ll.demo02.mvp.view.LoginView;
 
-public class LoginActivity extends Activity implements LoginView, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
     private ProgressBar progressBar;
     private EditText username;
@@ -61,7 +60,7 @@ public class LoginActivity extends Activity implements LoginView, View.OnClickLi
 
     @Override
     public void navigateToHome() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Main2Activity.class));
         finish();
     }
 

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -21,9 +20,6 @@ import com.example.ll.demo02.test.TestOneActivity;
 import com.example.ll.demo02.time.FastDateFormat;
 import com.example.ll.demo02.utils.FileLog;
 import com.example.ll.demo02.utils.SDCardUtil;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends BaseActivity {
 
@@ -46,14 +42,14 @@ public class MainActivity extends BaseActivity {
         fastDateFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSS");
 
         //Java线程
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                FileLog.d("tag","ceshi");
-                Log.i("tag","test");
-            }
-        });
+//        ExecutorService executorService = Executors.newSingleThreadExecutor();
+//        executorService.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                FileLog.d("tag","ceshi");
+//                Log.i("tag","test");
+//            }
+//        });
 
         setContentView(R.layout.activity_main);
 
@@ -63,7 +59,6 @@ public class MainActivity extends BaseActivity {
         myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
                 switch (position + 1) {
                     case 1:
                         startActivity(new Intent(MainActivity.this,FragmentActivity.class));     //FragmentOneActivity
@@ -90,7 +85,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onItemLongClick(View view, int position) {
-                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
             }
         });
         recycler_view_test_rv.setLayoutManager(new LinearLayoutManager(this));

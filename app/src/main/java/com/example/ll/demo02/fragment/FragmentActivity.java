@@ -1,5 +1,6 @@
 package com.example.ll.demo02.fragment;
 
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class FragmentActivity extends AppCompatActivity implements FragmentOne.O
         // Activity被回收后重新启动导致Fragment重叠
         if (savedInstanceState == null) {
             PlusOneFragment fragment = new PlusOneFragment();
-            android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.add(R.id.add_fragment, fragment);
             transaction.commit();
         }
