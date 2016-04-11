@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.ll.demo02.R;
 
@@ -98,8 +97,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
         switch (v.getId()){
 
             case R.id.btn_jump1:
-                Toast.makeText(getActivity(), "btn_jump1", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(getActivity(), "btn_jump1", Toast.LENGTH_SHORT).show();
 
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -109,7 +107,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
 
                 break;
             case R.id.btn_jump2:
-                Toast.makeText(getActivity(), "btn_jump1", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "btn_jump1", Toast.LENGTH_SHORT).show();
 
                 FragmentManager fmm = getFragmentManager();
                 FragmentTransaction fragmentTra = fmm.beginTransaction();

@@ -2,13 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlusOneFragment">
+    tools:context="com.example.ll.demo02.fragment.PlusOneFragment">
 
-    <com.google.android.gms.plus.PlusOneButton xmlns:plus="http://schemas.android.com/apk/lib/com.google.android.gms.plus"
+    <!--<com.google.android.gms.plus.PlusOneButton xmlns:plus="http://schemas.android.com/apk/lib/com.google.android.gms.plus"
         android:id="@+id/plus_one_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         plus:annotation="inline"
-        plus:size="standard" />
+        plus:size="standard" />-->
+
+    <CalendarView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </FrameLayout>

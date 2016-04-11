@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
@@ -11,6 +12,7 @@ import com.example.ll.demo02.R;
 import com.example.ll.demo02.mvp.presenter.LoginPresenter;
 import com.example.ll.demo02.mvp.presenter.LoginPresenterImpl;
 import com.example.ll.demo02.mvp.view.LoginView;
+import com.example.ll.demo02.utils.KeyBoardUtil;
 
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
@@ -18,6 +20,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     private EditText username;
     private EditText password;
     private LoginPresenter presenter;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         progressBar = (ProgressBar) findViewById(R.id.progress);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
-        findViewById(R.id.button).setOnClickListener(this);
+        button = (Button) findViewById(R.id.button);
+        if (button != null){
+            button.setOnClickListener(this);
+        }
 
         presenter = new LoginPresenterImpl(this);
     }
@@ -66,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public void onClick(View v) {
+        KeyBoardUtil.closeKeybord(v,LoginActivity.this);
         presenter.validateCredentials(username.getText().toString(), password.getText().toString());
     }
 }
