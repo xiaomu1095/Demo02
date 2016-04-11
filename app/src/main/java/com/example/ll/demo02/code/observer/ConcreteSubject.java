@@ -2,9 +2,10 @@ package com.example.ll.demo02.code.observer;
 
 public class ConcreteSubject extends Subject {
 
-    private String state;
+    private String state = "ConcreteSubject原來狀態";
 
     public String getState() {
+        System.out.println(state);
         return state;
     }
 
