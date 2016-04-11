@@ -1,8 +1,5 @@
 package com.example.ll.demo02.bean;
 
-/**
- * Created by Administrator on 2016/3/31.
- */
 public class VersionInfo {
     private String version;
     private String url;

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.ll.demo02.base.BaseActivity;
 import com.example.ll.demo02.fragment.FragmentActivity;
+import com.example.ll.demo02.mvp.LoginActivity;
 import com.example.ll.demo02.style.StyleActivity;
 import com.example.ll.demo02.test.TestOneActivity;
 import com.example.ll.demo02.time.FastDateFormat;
@@ -77,6 +78,9 @@ public class MainActivity extends BaseActivity {
                         Toast.makeText(MainActivity.this, freeBytes, Toast.LENGTH_SHORT).show();
 
                         startActivity(new Intent(MainActivity.this,TestOneActivity.class));     //切换Fragment时实现数据保持
+                        break;
+                    case 4:
+                        startActivity(new Intent(MainActivity.this,LoginActivity.class));     //MVP
                         break;
                     default:
                         break;

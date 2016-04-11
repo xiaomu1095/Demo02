@@ -11,7 +11,7 @@ public class AppContext extends BaseApplication {
     private static Drawable cachedWallpaper;
     private static int selectedColor;
     private static boolean isCustomTheme;
-    private static final Object sync = new Object();
+//    private static final Object sync = new Object();
 
     public static volatile Context applicationContext;
     public static volatile Handler applicationHandler;
