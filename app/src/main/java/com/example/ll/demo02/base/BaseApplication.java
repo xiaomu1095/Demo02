@@ -134,13 +134,13 @@ public class BaseApplication extends Application {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static SharedPreferences getPreferences() {
-        SharedPreferences pre = context().getSharedPreferences(PREF_NAME, Context.MODE_MULTI_PROCESS);
+        SharedPreferences pre = context().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return pre;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static SharedPreferences getPreferences(String prefName) {
-        return context().getSharedPreferences(prefName, Context.MODE_MULTI_PROCESS);
+        return context().getSharedPreferences(prefName, Context.MODE_PRIVATE);
     }
 
     public static int[] getDisplaySize() {

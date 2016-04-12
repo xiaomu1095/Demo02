@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.ll.demo02.base.BaseActivity;
+import com.example.ll.demo02.drawerlayout.DrawerLayoutDemo;
 import com.example.ll.demo02.fragment.FragmentActivity;
 import com.example.ll.demo02.mvp.LoginActivity;
 import com.example.ll.demo02.style.StyleActivity;
@@ -76,6 +77,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 4:
                         startActivity(new Intent(MainActivity.this,LoginActivity.class));     //MVP
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this,DrawerLayoutDemo.class));     //DrawerLayout
                         break;
                     default:
                         break;
