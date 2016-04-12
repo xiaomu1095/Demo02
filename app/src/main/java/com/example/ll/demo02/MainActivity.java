@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.ll.demo02.base.BaseActivity;
 import com.example.ll.demo02.drawerlayout.DrawerLayoutDemo;
+import com.example.ll.demo02.drawerlayout.ScrollingActivity;
+import com.example.ll.demo02.drawerlayout.TabActivity;
 import com.example.ll.demo02.fragment.FragmentActivity;
 import com.example.ll.demo02.mvp.LoginActivity;
 import com.example.ll.demo02.style.StyleActivity;
@@ -80,6 +82,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 5:
                         startActivity(new Intent(MainActivity.this,DrawerLayoutDemo.class));     //DrawerLayout
+                        break;
+                    case 6:
+                        startActivity(new Intent(MainActivity.this,TabActivity.class));     //TabLayout
+                        break;
+                    case 7:
+                        startActivity(new Intent(MainActivity.this,ScrollingActivity.class));     //ScrollingLayout
                         break;
                     default:
                         break;

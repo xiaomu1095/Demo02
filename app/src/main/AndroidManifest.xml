@@ -53,7 +53,15 @@
         <activity
             android:name=".drawerlayout.DrawerLayoutDemo"
             android:label="@string/title_activity_drawer_layout_demo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".drawerlayout.TabActivity"
+            android:label="@string/title_activity_tab"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".drawerlayout.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
