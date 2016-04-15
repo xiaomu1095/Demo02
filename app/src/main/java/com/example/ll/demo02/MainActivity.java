@@ -20,6 +20,7 @@ import com.example.ll.demo02.drawerlayout.ScrollingActivity;
 import com.example.ll.demo02.drawerlayout.TabActivity;
 import com.example.ll.demo02.fragment.FragmentActivity;
 import com.example.ll.demo02.mvp.LoginActivity;
+import com.example.ll.demo02.rxjava.RxJavaActivity;
 import com.example.ll.demo02.style.StyleActivity;
 import com.example.ll.demo02.test.TestOneActivity;
 import com.example.ll.demo02.time.FastDateFormat;
@@ -125,6 +126,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 7:
                         startActivity(new Intent(MainActivity.this,ScrollingActivity.class));     //ScrollingLayout
+                        break;
+                    case 8:
+                        startActivity(new Intent(MainActivity.this,RxJavaActivity.class));     //RxJava
                         break;
                     default:
                         break;

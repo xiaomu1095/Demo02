@@ -62,10 +62,11 @@
         <activity
             android:name=".drawerlayout.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DefaultIntro"
-            android:label="@string/title_activity_scrolling"/>
+            android:label="@string/title_activity_scrolling" />
+        <activity android:name=".rxjava.RxJavaActivity"/>
     </application>
 
 </manifest>
