@@ -8,8 +8,10 @@ import android.support.annotation.Nullable;
 
 import com.example.ll.demo02.appintro.FirstFragment;
 import com.example.ll.demo02.appintro.FourthFragment;
+import com.example.ll.demo02.appintro.SampleSlide;
 import com.example.ll.demo02.appintro.SecondFragment;
 import com.example.ll.demo02.appintro.ThirdFragmen;
+import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
@@ -28,10 +30,14 @@ public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentI
 
         // Add your slide's fragments here
         // AppIntro will automatically generate the dots indicator and buttons.
-        addSlide(first_fragment);
-        addSlide(second_fragment);
-        addSlide(third_fragment);
-        addSlide(fourth_fragment);
+//        addSlide(first_fragment);
+//        addSlide(second_fragment);
+//        addSlide(third_fragment);
+//        addSlide(fourth_fragment);
+        addSlide(SampleSlide.newInstance(R.layout.fragment_first));
+        addSlide(SampleSlide.newInstance(R.layout.fragment_second));
+        addSlide(SampleSlide.newInstance(R.layout.fragment_third));
+        addSlide(SampleSlide.newInstance(R.layout.fragment_fourth));
 
         // Instead of fragments, you can also use our default slide
         // Just set a title, description, background and image. AppIntro will do the rest
@@ -43,8 +49,10 @@ public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentI
         // SHOW or HIDE the statusbar
         showStatusBar(true);
 
+
+
         // Edit the color of the nav bar on Lollipop+ devices
-//        setNavBarColor(String.valueOf(Color.parseColor("#3F51B5")));
+        setNavBarColor("#3F51B5");
 
         // Turn vibration on and set intensity
         // NOTE: you will need to ask VIBRATE permission in Manifest if you haven't already
@@ -62,6 +70,7 @@ public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentI
         // Permissions -- takes a permission and slide number
         askForPermissions(new String[]{Manifest.permission.CAMERA}, 3);
     }
+
 
     @Override
     public void onNextPressed() {
