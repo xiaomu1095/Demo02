@@ -43,47 +43,6 @@ public class BaseApplication extends Application {
         return _resource;
     }
 
-    /**
-     * 放入已读文章列表中
-     *
-     */
-    public static void putReadedPostList(String prefFileName, String key, String value) {
-        SharedPreferences preferences = getPreferences(prefFileName);
-        int size = preferences.getAll().size();
-        SharedPreferences.Editor editor = preferences.edit();
-        if (size >= 100) {
-            editor.clear();
-        }
-        editor.putString(key, value);
-        apply(editor);
-    }
-
-    /**
-     * 读取是否是已读的文章列表
-     *
-     * @return
-     */
-    public static boolean isOnReadedPostList(String prefFileName, String key) {
-        return getPreferences(prefFileName).contains(key);
-    }
-
-
-    /**
-     * 记录列表上次刷新时间
-     *
-     * @param key
-     * @param value
-     * @return void
-     * @author 火蚁
-     * 2015-2-9 下午2:21:37
-     */
-    public static void putToLastRefreshTime(String key, String value) {
-        SharedPreferences preferences = getPreferences(LAST_REFRESH_TIME);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(key, value);
-        apply(editor);
-    }
-
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static void apply(SharedPreferences.Editor editor) {
