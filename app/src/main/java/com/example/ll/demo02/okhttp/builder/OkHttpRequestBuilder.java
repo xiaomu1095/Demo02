@@ -7,8 +7,7 @@ import java.util.Map;
 /**
  * Created by zhy on 15/12/14.
  */
-public abstract class OkHttpRequestBuilder
-{
+public abstract class OkHttpRequestBuilder {
     protected String url;
     protected Object tag;
     protected Map<String, String> headers;

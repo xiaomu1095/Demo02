@@ -30,7 +30,9 @@ public class Main2Activity extends AppCompatActivity implements MainView, Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         listView = (ListView) findViewById(R.id.list);
-        listView.setOnItemClickListener(this);
+        if (listView != null) {
+            listView.setOnItemClickListener(this);
+        }
         progressBar = (ProgressBar) findViewById(R.id.progress);
         presenter = new MainPresenterImpl(this);
 
