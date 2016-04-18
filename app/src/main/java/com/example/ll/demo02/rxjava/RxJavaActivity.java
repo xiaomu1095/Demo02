@@ -21,6 +21,8 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
+
+//文章来源：     http://gank.io/post/560e15be2dca930e00da1083
 public class RxJavaActivity extends AppCompatActivity {
 
     private static String tag = "RxJavaActivity";
@@ -285,6 +287,13 @@ public class RxJavaActivity extends AppCompatActivity {
                     }
                 })
                 .subscribe(subscriber);
+    }
+
+
+    public String getHTML(){
+
+
+        return "";
     }
 
 }
