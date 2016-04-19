@@ -4,15 +4,13 @@ import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public abstract class Callback<T>
-{
+public abstract class Callback<T> {
     /**
      * UI Thread
      *
      * @param request
      */
-    public void onBefore(Request request)
-    {
+    public void onBefore(Request request) {
     }
 
     /**
@@ -20,8 +18,7 @@ public abstract class Callback<T>
      *
      * @param
      */
-    public void onAfter()
-    {
+    public void onAfter() {
     }
 
     /**
@@ -29,10 +26,10 @@ public abstract class Callback<T>
      *
      * @param progress
      */
-    public void inProgress(float progress)
-    {
+    public void inProgress(float progress) {
 
     }
+
     /**
      * Thread Pool Thread
      *
@@ -45,24 +42,20 @@ public abstract class Callback<T>
     public abstract void onResponse(T response);
 
 
-    public static Callback CALLBACK_DEFAULT = new Callback()
-    {
+    public static Callback CALLBACK_DEFAULT = new Callback() {
 
         @Override
-        public Object parseNetworkResponse(Response response) throws Exception
-        {
+        public Object parseNetworkResponse(Response response) throws Exception {
             return null;
         }
 
         @Override
-        public void onError(Call call, Exception e)
-        {
+        public void onError(Call call, Exception e) {
 
         }
 
         @Override
-        public void onResponse(Object response)
-        {
+        public void onResponse(Object response) {
 
         }
     };

@@ -7,9 +7,11 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -26,6 +28,18 @@ import com.example.ll.demo02.test.TestOneActivity;
 import com.example.ll.demo02.time.FastDateFormat;
 import com.example.ll.demo02.utils.FileLog;
 import com.example.ll.demo02.utils.SDCardUtil;
+
+import java.io.File;
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends BaseActivity {
 
@@ -145,6 +159,7 @@ public class MainActivity extends BaseActivity {
         recycler_view_test_rv.setAdapter(myAdapter);
 
 
+
     }
 
 
@@ -193,5 +208,7 @@ public class MainActivity extends BaseActivity {
         }
 
     }
+
+
 
 }
