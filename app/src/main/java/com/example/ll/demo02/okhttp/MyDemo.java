@@ -45,6 +45,7 @@ import okhttp3.Route;
 import okhttp3.TlsVersion;
 import okio.Buffer;
 import okio.BufferedSink;
+import okio.BufferedSource;
 
 /**
  * Created by Administrator on 2016/4/19.
@@ -71,8 +72,38 @@ public class MyDemo {
 
             System.out.println(response.body().string());//(使用string（）方法时候，返回的内容不能超过1Mb)
         }
-
     }
+
+
+
+    public static class synchronousGet{
+        private final OkHttpClient client = new OkHttpClient();
+
+        public void run() throws Exception{
+            Request request = new Request.Builder()
+                    .url("http://www.baidu.com")
+                    .get()
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+//            if (response.body().contentLength())
+            System.out.println(response.body().contentLength());
+            BufferedSource buff = response.body().source();
+//            response.body().toString();
+            System.out.println(buff.readUtf8());
+        }
+        public static void main(String[] args) {
+            try {
+                new synchronousGet().run();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 
     //Asynchronous Get
