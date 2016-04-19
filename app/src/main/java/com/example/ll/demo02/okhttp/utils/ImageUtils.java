@@ -40,10 +40,7 @@ public class ImageUtils {
 
         @Override
         public String toString() {
-            return "ImageSize{" +
-                    "width=" + width +
-                    ", height=" + height +
-                    '}';
+            return "ImageSize{" + "width=" + width + ", height=" + height + '}';
         }
     }
 
@@ -134,17 +131,12 @@ public class ImageUtils {
             width = params.width; // 获得布局文件中的声明的宽度
         }
 
-        if (width <= 0)
-
-        {
+        if (width <= 0) {
             width = getImageViewFieldValue(view, "mMaxWidth");// 获得设置的最大的宽度
         }
         //如果宽度还是没有获取到，憋大招，使用屏幕的宽度
-        if (width <= 0)
-
-        {
-            DisplayMetrics displayMetrics = view.getContext().getResources()
-                    .getDisplayMetrics();
+        if (width <= 0) {
+            DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
             width = displayMetrics.widthPixels;
         }
 
@@ -168,8 +160,9 @@ public class ImageUtils {
                 value = fieldValue;
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return value;
-
     }
+
 }
