@@ -46,6 +46,8 @@ import okhttp3.TlsVersion;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.BufferedSource;
+import okio.ByteString;
+import okio.Okio;
 
 /**
  * Created by Administrator on 2016/4/19.
@@ -107,7 +109,7 @@ public class MyDemo {
 
 
 
-    //Asynchronous Get
+    //Asynchronous Get(下载亦可)//http://aiwoapp.blog.51cto.com/8677066/1622635[Okio的使用]
     public static class synchronous {
         private final OkHttpClient client = new OkHttpClient();
 
@@ -121,7 +123,8 @@ public class MyDemo {
 
         public void run() throws Exception {
             Request request = new Request.Builder()
-                    .url("http://publicobject.com/helloworld.txt")
+//                    .url("http://publicobject.com/helloworld.txt")
+                    .url("http://202.31.108.37:8080/hankookpda/apkserver/version/apk/1.apk")
                     .build();
 
             client.newCall(request).enqueue(new Callback() {
@@ -140,7 +143,23 @@ public class MyDemo {
                         System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                     }
 
-                    System.out.println(response.body().string());
+//                    long contentLength = response.body().contentLength();
+//                    float sum = 0;
+//                    int len = 0;
+                    BufferedSource bs = response.body().source();
+                    File apk = new File("d:/test/1.txt");
+                    if (!apk.exists()) {
+                        apk.createNewFile();
+                    }
+                    BufferedSink sink = Okio.buffer(Okio.sink(apk));
+                    while (sink.writeAll(bs) > 0) {
+                        sink.writeAll(bs);
+//                        int progress = (int) ((sum / contentLength) * 100);
+//                        System.out.println(contentLength);
+                    }
+                    sink.close();
+
+//                    System.out.println(response.body().string());
                 }
             });
         }
