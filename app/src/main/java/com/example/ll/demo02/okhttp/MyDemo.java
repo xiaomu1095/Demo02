@@ -46,6 +46,8 @@ import okhttp3.TlsVersion;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.BufferedSource;
+import okio.ByteString;
+import okio.Okio;
 
 /**
  * Created by Administrator on 2016/4/19.
@@ -81,8 +83,9 @@ public class MyDemo {
 
         public void run() throws Exception{
             Request request = new Request.Builder()
-                    .url("http://www.baidu.com")
                     .get()
+                    .url("http://www.baidu.com")
+                    .tag(1)
                     .build();
 
             Response response = client.newCall(request).execute();
@@ -90,7 +93,7 @@ public class MyDemo {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
 //            if (response.body().contentLength())
-            System.out.println(response.body().contentLength());
+            System.out.println(response.request().toString());
             BufferedSource buff = response.body().source();
 //            response.body().toString();
             System.out.println(buff.readUtf8());
@@ -106,10 +109,9 @@ public class MyDemo {
 
 
 
-    //Asynchronous Get
+    //Asynchronous Get(下载亦可)//http://aiwoapp.blog.51cto.com/8677066/1622635[Okio的使用]
     public static class synchronous {
         private final OkHttpClient client = new OkHttpClient();
-
 
         public static void main(String[] args) {
             try {
@@ -121,7 +123,8 @@ public class MyDemo {
 
         public void run() throws Exception {
             Request request = new Request.Builder()
-                    .url("http://publicobject.com/helloworld.txt")
+//                    .url("http://publicobject.com/helloworld.txt")
+                    .url("http://202.31.108.37:8080/hankookpda/apkserver/version/apk/1.apk")
                     .build();
 
             client.newCall(request).enqueue(new Callback() {
@@ -140,7 +143,23 @@ public class MyDemo {
                         System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                     }
 
-                    System.out.println(response.body().string());
+//                    long contentLength = response.body().contentLength();
+//                    float sum = 0;
+//                    int len = 0;
+                    BufferedSource bs = response.body().source();
+                    File apk = new File("d:/test/1.txt");
+                    if (!apk.exists()) {
+                        apk.createNewFile();
+                    }
+                    BufferedSink sink = Okio.buffer(Okio.sink(apk));
+                    while (sink.writeAll(bs) > 0) {
+                        sink.writeAll(bs);
+//                        int progress = (int) ((sum / contentLength) * 100);
+//                        System.out.println(contentLength);
+                    }
+                    sink.close();
+
+//                    System.out.println(response.body().string());
                 }
             });
         }
@@ -194,6 +213,7 @@ public class MyDemo {
 
     //Posting a String
     /*
+    (避免上传超过1Mb的参数)
     Because the entire request body is in memory simultaneously, avoid posting large (greater than 1 MiB) documents using this API.
      */
     public static class postString{
@@ -848,16 +868,13 @@ public class MyDemo {
             }
 
             // Use it to build an X509 trust manager.
-            KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(
-                    KeyManagerFactory.getDefaultAlgorithm());
+            KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             keyManagerFactory.init(keyStore, password);
-            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(
-                    TrustManagerFactory.getDefaultAlgorithm());
+            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
             TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
             if (trustManagers.length != 1 || !(trustManagers[0] instanceof X509TrustManager)) {
-                throw new IllegalStateException("Unexpected default trust managers:"
-                        + Arrays.toString(trustManagers));
+                throw new IllegalStateException("Unexpected default trust managers:" + Arrays.toString(trustManagers));
             }
             return (X509TrustManager) trustManagers[0];
         }

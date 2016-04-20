@@ -85,14 +85,16 @@ public class OkHttpUtils {
     }
 
     public static OkHttpUtils getInstance(OkHttpClient okHttpClient) {
-        if (mInstance == null) {
+        OkHttpUtils okHttpUtilsTmp = mInstance;
+        if (okHttpUtilsTmp == null) {
             synchronized (OkHttpUtils.class) {
-                if (mInstance == null) {
-                    mInstance = new OkHttpUtils(okHttpClient);
+                okHttpUtilsTmp = mInstance;
+                if (okHttpUtilsTmp == null) {
+                    mInstance = okHttpUtilsTmp = new OkHttpUtils(okHttpClient);
                 }
             }
         }
-        return mInstance;
+        return okHttpUtilsTmp;
     }
 
     public static OkHttpUtils getInstance() {
