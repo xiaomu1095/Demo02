@@ -43,7 +43,7 @@ public class FileLog {
         if (!BuildVars.DEBUG_VERSION) {
             return;
         }
-        dateFormat = FastDateFormat.getInstance("dd_MM_yyyy_HH_mm_ss", Locale.CHINA);
+        dateFormat = FastDateFormat.getInstance("yyyy_MM_dd_HH", Locale.CHINA);
         try {
             File sdCard = AppContext.applicationContext.getExternalFilesDir(null);
             if (sdCard == null) {

@@ -5,6 +5,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 
 import com.example.ll.demo02.base.BaseApplication;
+import com.example.ll.demo02.okhttp.OkHttpUtils;
+
+import java.util.concurrent.TimeUnit;
 
 public class AppContext extends BaseApplication {
 
@@ -38,6 +41,20 @@ public class AppContext extends BaseApplication {
         instance = this;
         applicationContext = getApplicationContext();
         applicationHandler = new Handler(applicationContext.getMainLooper());
+
+
+        //这里可以设置自签名证书
+//        OkHttpUtils.getInstance().setCertificates(new InputStream[]{
+//                new Buffer()
+//                        .writeUtf8(CER_12306)
+//                        .inputStream()});
+        OkHttpUtils.getInstance().debug("OkHttpUtils").setConnectTimeout(100000, TimeUnit.MILLISECONDS);
+        //使用https，但是默认信任全部证书
+        OkHttpUtils.getInstance().setCertificates();
+
+
+        //使用这种方式，设置多个OkHttpClient参数
+//        OkHttpUtils.getInstance(new OkHttpClient.Builder().build());
 
     }
 

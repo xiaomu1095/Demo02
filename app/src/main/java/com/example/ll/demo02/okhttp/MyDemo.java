@@ -81,8 +81,9 @@ public class MyDemo {
 
         public void run() throws Exception{
             Request request = new Request.Builder()
-                    .url("http://www.baidu.com")
                     .get()
+                    .url("http://www.baidu.com")
+                    .tag(1)
                     .build();
 
             Response response = client.newCall(request).execute();
@@ -90,7 +91,7 @@ public class MyDemo {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
 //            if (response.body().contentLength())
-            System.out.println(response.body().contentLength());
+            System.out.println(response.request().toString());
             BufferedSource buff = response.body().source();
 //            response.body().toString();
             System.out.println(buff.readUtf8());
@@ -109,7 +110,6 @@ public class MyDemo {
     //Asynchronous Get
     public static class synchronous {
         private final OkHttpClient client = new OkHttpClient();
-
 
         public static void main(String[] args) {
             try {
@@ -194,6 +194,7 @@ public class MyDemo {
 
     //Posting a String
     /*
+    (避免上传超过1Mb的参数)
     Because the entire request body is in memory simultaneously, avoid posting large (greater than 1 MiB) documents using this API.
      */
     public static class postString{
@@ -848,16 +849,13 @@ public class MyDemo {
             }
 
             // Use it to build an X509 trust manager.
-            KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(
-                    KeyManagerFactory.getDefaultAlgorithm());
+            KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             keyManagerFactory.init(keyStore, password);
-            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(
-                    TrustManagerFactory.getDefaultAlgorithm());
+            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
             TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
             if (trustManagers.length != 1 || !(trustManagers[0] instanceof X509TrustManager)) {
-                throw new IllegalStateException("Unexpected default trust managers:"
-                        + Arrays.toString(trustManagers));
+                throw new IllegalStateException("Unexpected default trust managers:" + Arrays.toString(trustManagers));
             }
             return (X509TrustManager) trustManagers[0];
         }

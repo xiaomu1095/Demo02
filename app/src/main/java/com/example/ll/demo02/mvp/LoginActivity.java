@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     @Override
     public void navigateToHome() {
         startActivity(new Intent(this, Main2Activity.class));
-        finish();
+//        finish();
     }
 
     @Override
