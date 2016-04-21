@@ -97,5 +97,47 @@ public class StringUtils {
     }
 
 
+    /**
+     * 包含中文
+     *
+     * @param data 可能包含中文的字符串
+     * @return 是否包含中文
+     */
+    public static boolean isContainChinese(String data) {
+        String chinese = "[\u0391-\uFFE5]";
+        if (isEmpty(data)) {
+            for (int i = 0; i < data.length(); i++) {
+                String temp = data.substring(i, i + 1);
+                boolean flag = temp.matches(chinese);
+                if (flag) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 只含字母和数字
+     *
+     * @param data 可能只包含字母和数字的字符串
+     * @return 是否只包含字母和数字
+     */
+    public static boolean isNumberLetter(String data) {
+        String expr = "^[A-Za-z0-9]+$";
+        return data.matches(expr);
+    }
+
+    /**
+     * 只含数字
+     *
+     * @param data 可能只包含数字的字符串
+     * @return 是否只包含数字
+     */
+    public static boolean isNumber(String data) {
+        String expr = "^[0-9]+$";
+        return data.matches(expr);
+    }
+
 
 }
