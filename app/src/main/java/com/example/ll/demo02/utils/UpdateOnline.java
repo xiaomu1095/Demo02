@@ -104,14 +104,28 @@ public class UpdateOnline {
 
 
 
-    /**
-     * 安装APK
-     *
-     * @param file
+//    /**
+//     * 安装APK
+//     *
+//     * @param file
+//     */
+//    protected void installApk(File file) {
+//        Intent intent = new Intent();
+//        intent.setAction(Intent.ACTION_VIEW);
+//        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        context.startActivity(intent);
+//    }
+
+
+    /*
+     * 安装apk
      */
     protected void installApk(File file) {
         Intent intent = new Intent();
+        // 执行动作
         intent.setAction(Intent.ACTION_VIEW);
+        // 执行的数据类型
         intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
