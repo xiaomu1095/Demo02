@@ -51,6 +51,7 @@ public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentI
 
 
 
+
         // Edit the color of the nav bar on Lollipop+ devices
         setNavBarColor("#3F51B5");
 

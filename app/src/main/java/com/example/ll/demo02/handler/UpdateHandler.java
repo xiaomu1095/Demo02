@@ -35,13 +35,13 @@ public class UpdateHandler extends Handler {
 //              showUpdataDialog();
                 break;
             case 2:
-                Toast.makeText(context, "锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷息失锟斤拷", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "获取服务器更新信息失败", Toast.LENGTH_LONG).show();
                 break;
             case 3:
-                Toast.makeText(context, "锟斤拷锟斤拷锟铰版本失锟斤拷", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "下载新版本失败", Toast.LENGTH_LONG).show();
                 break;
             case 4:
-                Toast.makeText(context, "锟斤拷目前使锟矫的版本为锟斤拷锟铰的版本锟斤拷锟斤拷锟斤拷锟斤拷锟�", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "您目前使用的版本为最新的版本，无需更新", Toast.LENGTH_LONG).show();
                 break;
         }
     }
