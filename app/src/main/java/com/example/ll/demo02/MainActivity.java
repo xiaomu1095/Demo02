@@ -26,6 +26,7 @@ import com.example.ll.demo02.test.TestOneActivity;
 import com.example.ll.demo02.time.FastDateFormat;
 import com.example.ll.demo02.utils.FileLog;
 import com.example.ll.demo02.utils.SDCardUtil;
+import com.example.ll.demo02.zxing.ZxingActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -129,6 +130,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 8:
                         startActivity(new Intent(MainActivity.this,RxJavaActivity.class));     //RxJava
+                        break;
+                    case 9:
+                        startActivity(new Intent(MainActivity.this,ZxingActivity.class));     //Zxing
                         break;
                     default:
                         break;
