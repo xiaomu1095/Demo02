@@ -19,7 +19,7 @@
 
     <application
         android:name=".AppContext"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -54,7 +54,7 @@
             android:name=".provider.MyContentProvider"
             android:authorities="com.xiaomu.demo02.myprovider"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".db.LoaderActivity"
@@ -77,7 +77,7 @@
             android:name=".DefaultIntro"
             android:label="@string/title_activity_scrolling" />
         <activity android:name=".rxjava.RxJavaActivity" />
-        <activity android:name=".zxing.ZxingActivity"></activity>
+        <activity android:name=".zxing.ZxingActivity"/>
     </application>
 
 </manifest>
