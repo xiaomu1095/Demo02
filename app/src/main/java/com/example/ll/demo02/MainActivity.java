@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.ll.demo02.aosv.ViewPagerTabListViewActivity;
 import com.example.ll.demo02.base.BaseActivity;
 import com.example.ll.demo02.drawerlayout.DrawerLayoutDemo;
 import com.example.ll.demo02.drawerlayout.ScrollingActivity;
@@ -133,6 +134,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 9:
                         startActivity(new Intent(MainActivity.this,ZxingActivity.class));     //Zxing
+                        break;
+                    case 10:
+                        startActivity(new Intent(MainActivity.this,ViewPagerTabListViewActivity.class));     //ViewPagerTabListViewActivity
                         break;
                     default:
                         break;
