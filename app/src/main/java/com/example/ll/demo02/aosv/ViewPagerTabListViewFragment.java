@@ -26,9 +26,6 @@ import com.example.ll.aosvlibrary.ObservableListView;
 import com.example.ll.aosvlibrary.ObservableScrollViewCallbacks;
 import com.example.ll.aosvlibrary.ScrollUtils;
 import com.example.ll.demo02.R;
-//import com.github.ksoichiro.android.observablescrollview.ObservableListView;
-//import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-//import com.github.ksoichiro.android.observablescrollview.ScrollUtils;
 
 public class ViewPagerTabListViewFragment extends BaseFragment {
 

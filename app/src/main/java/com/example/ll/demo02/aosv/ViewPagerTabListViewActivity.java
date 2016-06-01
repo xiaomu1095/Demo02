@@ -23,7 +23,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-//import android.view.ViewPropertyAnimator;
 
 import com.example.ll.aosvlibrary.CacheFragmentStatePagerAdapter;
 import com.example.ll.aosvlibrary.ObservableListView;
@@ -34,14 +33,6 @@ import com.example.ll.demo02.R;
 import com.example.ll.demo02.aosv.widget.SlidingTabLayout;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
-//import com.github.ksoichiro.android.observablescrollview.CacheFragmentStatePagerAdapter;
-//import com.github.ksoichiro.android.observablescrollview.ObservableListView;
-//import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-//import com.github.ksoichiro.android.observablescrollview.ScrollState;
-//import com.github.ksoichiro.android.observablescrollview.ScrollUtils;
-//import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
-//import com.nineoldandroids.view.ViewHelper;
-//import com.nineoldandroids.view.ViewPropertyAnimator;
 
 /**
  * SlidingTabLayout and SlidingTabStrip are from google/iosched:

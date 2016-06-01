@@ -36,6 +36,7 @@ public class SDCardUtil {
      * @return
      */
     @TargetApi(android.os.Build.VERSION_CODES.JELLY_BEAN_MR2)
+    @Deprecated
     public static long getSDCardAllSize() {
         if (isSDCardEnable()) {
             StatFs stat = new StatFs(getSDCardPath());
@@ -64,6 +65,7 @@ public class SDCardUtil {
      * @return 容量字节 SDCard可用空间，内部存储可用空间
      */
     @TargetApi(android.os.Build.VERSION_CODES.JELLY_BEAN_MR2)
+    @Deprecated
     public static long getFreeBytes(String filePath) {
         // 如果是sd卡的下的路径，则获取sd卡可用容量
         if (filePath.startsWith(getSDCardPath())) {

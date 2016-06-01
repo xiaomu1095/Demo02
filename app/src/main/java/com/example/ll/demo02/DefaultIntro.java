@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.View;
 
 import com.example.ll.demo02.appintro.FirstFragment;
 import com.example.ll.demo02.appintro.FourthFragment;
@@ -12,10 +14,8 @@ import com.example.ll.demo02.appintro.SampleSlide;
 import com.example.ll.demo02.appintro.SecondFragment;
 import com.example.ll.demo02.appintro.ThirdFragmen;
 import com.github.paolorotolo.appintro.AppIntro;
-import com.github.paolorotolo.appintro.AppIntro2;
-import com.github.paolorotolo.appintro.AppIntroFragment;
 
-public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentInteractionListener,SecondFragment.OnFragmentInteractionListener
+public class DefaultIntro extends AppIntro implements FirstFragment.OnFragmentInteractionListener,SecondFragment.OnFragmentInteractionListener
             ,ThirdFragmen.OnFragmentInteractionListener,FourthFragment.OnFragmentInteractionListener{
 
     private FirstFragment first_fragment = FirstFragment.newInstance("","");
@@ -44,10 +44,13 @@ public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentI
 //        addSlide(AppIntroFragment.newInstance("title", "description", R.drawable.ic_launcher, R.color.cardview_shadow_end_color));
 
         // OPTIONAL METHODS
+        // Override bar/separator color.
+        setBarColor(Color.parseColor("#3F51B5"));
+        setSeparatorColor(Color.parseColor("#2196F3"));
 
 
         // SHOW or HIDE the statusbar
-        showStatusBar(true);
+        showStatusBar(false);
 
 
 
@@ -72,25 +75,48 @@ public class DefaultIntro extends AppIntro2 implements FirstFragment.OnFragmentI
         askForPermissions(new String[]{Manifest.permission.CAMERA}, 3);
     }
 
+    public void getStarted(View view) {
+        finish();
+    }
+
+//    @Override
+//    public void onNextPressed() {
+//        // Do something when users tap on Next button.
+//    }
+//
+//    @Override
+//    public void onDonePressed() {
+//        // Do something when users tap on Done button.
+//        finish();
+//    }
+//
+//    @Override
+//    public void onSlideChanged() {
+//        // Do something when slide is changed
+//    }
 
     @Override
-    public void onNextPressed() {
-        // Do something when users tap on Next button.
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     @Override
-    public void onDonePressed() {
+    public void onSkipPressed(Fragment currentFragment) {
+        super.onSkipPressed(currentFragment);
+        // Do something when users tap on Skip button.
+        finish();
+    }
+
+    @Override
+    public void onDonePressed(Fragment currentFragment) {
+        super.onDonePressed(currentFragment);
         // Do something when users tap on Done button.
         finish();
     }
 
     @Override
-    public void onSlideChanged() {
-        // Do something when slide is changed
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
+        super.onSlideChanged(oldFragment, newFragment);
+        // Do something when the slide changes.
     }
 }

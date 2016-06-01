@@ -163,6 +163,7 @@ public class RxJavaActivity extends AppCompatActivity {
     }
 
 
+    @Deprecated
     void imageId() {
         final int drawableRes = R.drawable.side_nav_bar;
         final ImageView imageView = (ImageView) RxJavaActivity.this.findViewById(R.id.rx_iv);
