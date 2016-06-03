@@ -11,7 +11,7 @@ package com.example.ll.demo02.utils;
 import android.util.Log;
 
 import com.example.ll.demo02.AppContext;
-import com.example.ll.demo02.time.FastDateFormat;
+import com.example.ll.demo02.utils.time.FastDateFormat;
 
 import java.io.File;
 import java.io.FileOutputStream;

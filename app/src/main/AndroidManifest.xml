@@ -62,6 +62,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".mvp.Main2Activity" />
         <activity
+            android:name=".swipeactivity.MainActivity"
+            android:label="@string/title_activity_loader"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".swipeactivity.SecondActivity"
+            android:theme="@style/BlankTheme" />
+        <activity android:name=".swipeactivity.ThirdActivity" />
+        <activity
             android:name=".drawerlayout.DrawerLayoutDemo"
             android:label="@string/title_activity_drawer_layout_demo"
             android:theme="@style/AppTheme.NoActionBar" />
