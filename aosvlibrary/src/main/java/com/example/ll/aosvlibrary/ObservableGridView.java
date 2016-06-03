@@ -276,6 +276,7 @@ public class ObservableGridView extends GridView implements Scrollable {
     }
 
     @Override
+    @Deprecated
     public void setScrollViewCallbacks(ObservableScrollViewCallbacks listener) {
         mCallbacks = listener;
     }

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.ll.demo02.time;
+package com.example.ll.demo02.utils.time;
 
 import java.text.DateFormat;
 import java.text.Format;

@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.ll.demo02.aosv.ViewPagerTabListViewActivity;
 import com.example.ll.demo02.base.BaseActivity;
 import com.example.ll.demo02.drawerlayout.DrawerLayoutDemo;
 import com.example.ll.demo02.drawerlayout.ScrollingActivity;
@@ -23,7 +24,7 @@ import com.example.ll.demo02.mvp.LoginActivity;
 import com.example.ll.demo02.rxjava.RxJavaActivity;
 import com.example.ll.demo02.style.StyleActivity;
 import com.example.ll.demo02.test.TestOneActivity;
-import com.example.ll.demo02.time.FastDateFormat;
+import com.example.ll.demo02.utils.time.FastDateFormat;
 import com.example.ll.demo02.utils.FileLog;
 import com.example.ll.demo02.utils.SDCardUtil;
 import com.example.ll.demo02.zxing.ZxingActivity;
@@ -133,6 +134,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 9:
                         startActivity(new Intent(MainActivity.this,ZxingActivity.class));     //Zxing
+                        break;
+                    case 10:
+                        startActivity(new Intent(MainActivity.this,ViewPagerTabListViewActivity.class));     //ViewPagerTabListViewActivity
+                        break;
+                    case 11:
+                        startActivity(new Intent(MainActivity.this, com.example.ll.demo02.swipeactivity.MainActivity.class));     //SwipeActivity
                         break;
                     default:
                         break;
