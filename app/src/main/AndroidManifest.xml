@@ -83,6 +83,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DefaultIntro"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_scrolling" />
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".zxing.ZxingActivity"/>

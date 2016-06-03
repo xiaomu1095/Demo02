@@ -39,7 +39,4 @@ public class SampleSlide extends Fragment {
         return inflater.inflate(layoutResId, container, false);
     }
 
-    public void getStarted(View view) {
-        getActivity().finish();
-    }
 }
