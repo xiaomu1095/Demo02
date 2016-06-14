@@ -83,13 +83,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DefaultIntro"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_scrolling" />
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".rxjava.RxJavaActivity" />
-        <activity android:name=".zxing.ZxingActivity"/>
+        <activity android:name=".zxing.ZxingActivity" />
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".aosv.ViewPagerTabListViewActivity"/>
+            android:name=".aosv.ViewPagerTabListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".jni.JNIActivity"></activity>
     </application>
 
 </manifest>

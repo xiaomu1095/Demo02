@@ -10,7 +10,7 @@ import com.example.ll.demo02.R;
 import com.example.ll.demo02.fragment.dummy.DummyContent;
 
 public class FragmentActivity extends AppCompatActivity implements FragmentOne.OnFragmentInteractionListener,
-        ItemFragment.OnListFragmentInteractionListener, PlusOneFragment.OnFragmentInteractionListener{
+        ItemFragment.OnListFragmentInteractionListener, PlusOneFragment.OnFragmentInteractionListener, TimelineFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

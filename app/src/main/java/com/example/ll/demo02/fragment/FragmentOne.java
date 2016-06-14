@@ -97,8 +97,6 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
         switch (v.getId()){
 
             case R.id.btn_jump1:
-//                Toast.makeText(getActivity(), "btn_jump1", Toast.LENGTH_SHORT).show();
-
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 ItemFragment itemgragment = new ItemFragment();
@@ -107,13 +105,19 @@ public class FragmentOne extends Fragment implements View.OnClickListener{
 
                 break;
             case R.id.btn_jump2:
-//                Toast.makeText(getActivity(), "btn_jump1", Toast.LENGTH_SHORT).show();
-
                 FragmentManager fmm = getFragmentManager();
                 FragmentTransaction fragmentTra = fmm.beginTransaction();
                 PlusOneFragment plusOne = new PlusOneFragment();
                 fragmentTra.replace(R.id.add_fragment, plusOne);
                 fragmentTra.commit();
+
+                break;
+            case R.id.btn_jump3:
+                FragmentManager fmmm = getFragmentManager();
+                FragmentTransaction fragmentTrasa = fmmm.beginTransaction();
+                TimelineFragment timelineFragment = new TimelineFragment();
+                fragmentTrasa.replace(R.id.add_fragment, timelineFragment);
+                fragmentTrasa.commit();
 
                 break;
             default:

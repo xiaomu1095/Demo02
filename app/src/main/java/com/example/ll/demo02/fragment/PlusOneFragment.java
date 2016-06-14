@@ -11,12 +11,10 @@ import android.view.ViewGroup;
 import com.example.ll.demo02.R;
 
 public class PlusOneFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final int PLUS_ONE_REQUEST_CODE = 0;
     private final String PLUS_ONE_URL = "http://developer.android.com";
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -27,7 +25,6 @@ public class PlusOneFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static PlusOneFragment newInstance(String param1, String param2) {
         PlusOneFragment fragment = new PlusOneFragment();
         Bundle args = new Bundle();
