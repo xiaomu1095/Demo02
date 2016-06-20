@@ -20,6 +20,7 @@ import com.example.ll.demo02.drawerlayout.DrawerLayoutDemo;
 import com.example.ll.demo02.drawerlayout.ScrollingActivity;
 import com.example.ll.demo02.drawerlayout.TabActivity;
 import com.example.ll.demo02.fragment.FragmentActivity;
+import com.example.ll.demo02.jni.JNIActivity;
 import com.example.ll.demo02.mvp.LoginActivity;
 import com.example.ll.demo02.rxjava.RxJavaActivity;
 import com.example.ll.demo02.style.StyleActivity;
@@ -140,6 +141,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 11:
                         startActivity(new Intent(MainActivity.this, com.example.ll.demo02.swipeactivity.MainActivity.class));     //SwipeActivity
+                        break;
+                    case 12:
+                        startActivity(new Intent(MainActivity.this, JNIActivity.class));     //JNI
                         break;
                     default:
                         break;

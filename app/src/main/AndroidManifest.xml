@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ll.demo02">
+          package="com.example.ll.demo02">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+        android:maxSdkVersion="18"/>
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+        android:maxSdkVersion="18"/>
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true" />
+        android:required="true"/>
 
     <application
         android:name=".AppContext"
@@ -28,67 +28,71 @@
             android:name=".MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".fragment.FragmentActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"/>
         <activity
             android:name=".mvp.LoginActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"/>
 
-        <receiver android:name=".MainActivity$ExitReceiver" />
+        <receiver android:name=".MainActivity$ExitReceiver"/>
 
-        <activity android:name=".style.StyleActivity" />
-        <activity android:name=".test.TestOneActivity" />
+        <activity android:name=".style.StyleActivity"/>
+        <activity android:name=".test.TestOneActivity"/>
 
         <service
             android:name=".service.UploadService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"/>
 
         <provider
             android:name=".provider.MyContentProvider"
             android:authorities="com.xiaomu.demo02.myprovider"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false"/>
 
         <activity
             android:name=".db.LoaderActivity"
             android:label="@string/title_activity_loader"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".mvp.Main2Activity" />
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".mvp.Main2Activity"/>
         <activity
             android:name=".swipeactivity.MainActivity"
             android:label="@string/title_activity_loader"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".swipeactivity.SecondActivity"
-            android:theme="@style/BlankTheme" />
-        <activity android:name=".swipeactivity.ThirdActivity" />
+            android:theme="@style/BlankTheme"/>
+        <activity android:name=".swipeactivity.ThirdActivity"/>
         <activity
             android:name=".drawerlayout.DrawerLayoutDemo"
             android:label="@string/title_activity_drawer_layout_demo"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".drawerlayout.TabActivity"
             android:label="@string/title_activity_tab"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".drawerlayout.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".DefaultIntro"
-            android:label="@string/title_activity_scrolling" />
-        <activity android:name=".rxjava.RxJavaActivity" />
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".rxjava.RxJavaActivity"/>
         <activity android:name=".zxing.ZxingActivity"/>
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".aosv.ViewPagerTabListViewActivity"/>
+            android:name=".aosv.ViewPagerTabListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".jni.JNIActivity"/>
+        <activity android:name=".camera.CameraActivity">
+        </activity>
     </application>
 
 </manifest>
