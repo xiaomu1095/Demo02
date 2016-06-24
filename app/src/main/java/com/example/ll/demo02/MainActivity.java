@@ -6,16 +6,19 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.ll.demo02.aosv.ViewPagerTabListViewActivity;
 import com.example.ll.demo02.base.BaseActivity;
+import com.example.ll.demo02.camera.CameraActivity;
 import com.example.ll.demo02.drawerlayout.DrawerLayoutDemo;
 import com.example.ll.demo02.drawerlayout.ScrollingActivity;
 import com.example.ll.demo02.drawerlayout.TabActivity;
@@ -144,6 +147,8 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 12:
                         startActivity(new Intent(MainActivity.this, JNIActivity.class));     //JNI
+                    case 13:
+                        startActivity(new Intent(MainActivity.this, CameraActivity.class));     //Camera
                         break;
                     default:
                         break;
@@ -160,6 +165,11 @@ public class MainActivity extends BaseActivity {
         recycler_view_test_rv.setAdapter(myAdapter);
 
 
+        Toast.makeText(MainActivity.this, getFilesDir().getPath(), Toast.LENGTH_SHORT).show();
+        if (Environment.isExternalStorageEmulated() && getExternalCacheDir() != null && getExternalFilesDir(null) != null){
+            Log.i("file",getExternalFilesDir(null).getPath());
+            Log.i("file",getExternalCacheDir().getPath());
+        }
 
     }
 
