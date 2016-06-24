@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.RoundingMode;
 import java.nio.channels.FileChannel;
 
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
@@ -176,6 +177,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             BitmapFactory.Options options = new BitmapFactory.Options();
 //            options.inJustDecodeBounds = true;
             options.inSampleSize = 6;//采样率压缩
+            if (file.length() / 1000000 >= 2){//当原图超过2M的时候，缩放系数加1
+                options.inSampleSize = 7;//采样率压缩
+            }
 
             FileInputStream fis = new FileInputStream(file);
 
