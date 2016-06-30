@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,13 +34,14 @@ import com.example.ll.demo02.utils.FileLog;
 import com.example.ll.demo02.utils.SDCardUtil;
 import com.example.ll.demo02.zxing.ZxingActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String EXITACTION = "action.exit";
     private FastDateFormat fastDateFormat = null;
     private ExitReceiver exitReceiver = new ExitReceiver();
 
     private RecyclerView recycler_view_test_rv;
+    private SwipeRefreshLayout srl_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class MainActivity extends BaseActivity {
                     SharedPreferences.Editor e = getPrefs.edit();
 
                     //  Edit preference to make it false because we don't want this to run again
-//                    e.putBoolean("firstStart", false);
+                    e.putBoolean("firstStart", false);
 
                     //  Apply changes
                     e.apply();
@@ -101,6 +103,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         recycler_view_test_rv = (RecyclerView) findViewById(R.id.recycler_view_test_rv);
+        srl_main = (SwipeRefreshLayout) findViewById(R.id.srl_main);
+        if (srl_main != null) {
+            srl_main.setOnRefreshListener(this);
+            srl_main.setColorSchemeColors(R.color.colorPrimary,
+                    R.color.result_text,
+                    R.color.accentLight);
+        }
 
         MyAdapter myAdapter = new MyAdapter(this);
         myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
@@ -147,8 +156,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 12:
                         startActivity(new Intent(MainActivity.this, JNIActivity.class));     //JNI
+                        break;
                     case 13:
                         startActivity(new Intent(MainActivity.this, CameraActivity.class));     //Camera
+                        break;
+                    case 14:
+                        startActivity(new Intent(MainActivity.this, WebViewActivity.class));     //WebView
                         break;
                     default:
                         break;
@@ -171,6 +184,17 @@ public class MainActivity extends BaseActivity {
             Log.i("file",getExternalCacheDir().getPath());
         }
 
+    }
+
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              srl_main.setRefreshing(false);
+            }
+        },5000);
     }
 
 

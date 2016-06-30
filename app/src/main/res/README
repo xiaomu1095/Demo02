@@ -262,3 +262,8 @@ android:state_hovered: 设置是否鼠标在上面滑动的状态，true表示�
 
 
 
+
+android.support.v4.widget.SwipeRefreshLayout     gooogle上拉刷新控件
+
+
+
