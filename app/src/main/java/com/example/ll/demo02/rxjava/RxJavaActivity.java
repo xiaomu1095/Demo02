@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,11 +27,88 @@ import rx.schedulers.Schedulers;
 public class RxJavaActivity extends AppCompatActivity {
 
     private static String tag = "RxJavaActivity";
+    private ImageView rx_iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
+
+        rx_iv = (ImageView) findViewById(R.id.rx_iv);
+
+        if (rx_iv != null) {
+            rx_iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //生成一个被观察者
+//                    Observable<String> ivObservable = Observable.create(
+//                            new Observable.OnSubscribe<String>() {
+//                                @Override
+//                                public void call(Subscriber<? super String> sub) {
+//                                    sub.onNext("ceshi==");
+//                                    sub.onCompleted();
+//                                }
+//                            });
+                    Observable<String> mStringObservable2 = Observable.just("Observable的just生成方法！！");
+
+                    //生成一个订阅者
+//                    Subscriber<String> mSubscriber = new Subscriber<String>() {
+//                        @Override
+//                        public void onCompleted() {
+//                            Toast.makeText(RxJavaActivity.this, "Subscriber onCompleted", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        @Override
+//                        public void onError(Throwable e) {
+//                            Toast.makeText(RxJavaActivity.this, "Subscriber OnError" + e.getMessage().substring(0, 10), Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        @Override
+//                        public void onNext(String s) {
+//                            Toast.makeText(RxJavaActivity.this,s,Toast.LENGTH_SHORT).show();
+//                        }
+//                    };
+                    Action1<String> nextAction1 = new Action1<String>() {//onNext的Action调用
+                        @Override
+                        public void call(String s) {
+                            Toast.makeText(RxJavaActivity.this, s + "Action1的调用方法！！", Toast.LENGTH_SHORT).show();
+                        }
+                    };
+
+                    //被观察者和订阅者相互绑定
+//                    ivObservable.subscribe(mSubscriber);
+                    mStringObservable2.subscribe(nextAction1);
+                    
+                    Observable.just("hello")
+                            .map(new Func1<String, Object>() {
+                                @Override
+                                public Object call(String s) {
+                                    return s + "xiaomu";
+                                }
+                            })
+                            .map(new Func1<Object, Object>() {
+                                @Override
+                                public Object call(Object s) {
+                                    return s.toString() + "_map2";
+                                }
+                            })
+                            .subscribe(new Action1<Object>() {
+                                @Override
+                                public void call(Object o) {
+                                    Toast.makeText(RxJavaActivity.this, o.toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                }
+            });
+        }
+
+
+
+
+
+
     }
 
 
@@ -117,8 +195,6 @@ public class RxJavaActivity extends AppCompatActivity {
 
 
 
-
-
         Action1<String> onNextAction = new Action1<String>() {
             // onNext()
             @Override
@@ -146,8 +222,6 @@ public class RxJavaActivity extends AppCompatActivity {
         observable.subscribe(onNextAction, onErrorAction);
         // 自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()
         observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
-
-
 
     }
 
